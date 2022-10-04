@@ -1,0 +1,59 @@
+// CONSTRAINTS
+Constraint: Logic | Relational | Arithmetic | Variable;
+
+
+// LOGIC CONSTRAINTS
+Logic: type=LogicType "(" parameters+=LogicParameter ")";
+
+LogicParameter: BOOL | Value | Logic;
+
+LogicType: "Enquivalence"
+           | "Implication"
+           | "Negation"
+           | "And"
+           | "Or"
+           | "Xor";
+
+
+// RELATIONAL CONSTRAINTS
+Relational: type=RelationalType "(" parameters+=RelationalParameter[","] ")";
+
+RelationalParameter: INT | Value | RelationalInclusiveness| Arithmetic;
+
+RelationalInclusiveness: "Inclusive" | "Exclusive";
+
+RelationalType: "Inferior"
+                | "Superior"
+                | "Equal"
+                | "Different";
+
+
+// ARITHMETIC CONSTRAINTS
+Arithmetic: type=ArithmeticType "(" parameters+=ArithmeticParameter[","] ")";
+
+ArithmeticParameter: INT | Value | Arithmetic;
+
+ArithmeticType: "Addition"
+                | "Subtraction"
+                | "Multiplication"
+                | "Division"
+                | "Minimum"
+                | "Maximum";
+
+
+// VARIABLE CONSTRAINTS
+Variable: type=VariableType "(" parameters+=VariableParameter[","] ")";
+
+VariableParameter: INT | BOOL | Value | Range;
+
+Range: "Range" "(" minimum=INT "," maximum=INT ")";
+
+VariableType: "Integer"
+              | "Boolean";
+
+
+// ENTITIES
+Value: type=EntityType "."  values+=ID["."];
+
+EntityType: "Node"
+            | "Connection";
