@@ -69,7 +69,7 @@ class Relational:
             case "Equal":
                 return modeling.Equal(*parameters)
             case "Different":
-                return modeling.Equal(*parameters)
+                return modeling.Different(*parameters)
             case _:
                 raise ValueError
 
@@ -113,9 +113,9 @@ class Variable:
 
         match self.type:
             case "Integer":
-                return Integer(*parameters)
+                return modeling.Integer(*parameters)
             case "Boolean":
-                return Boolean(*parameters)
+                return modeling.Boolean(*parameters)
             case _:
                 raise ValueError()
 
@@ -127,7 +127,7 @@ class Range:
         self.parent = parent
 
     def to_model(self, component: graph.component) -> modeling.Range:
-        return modeling.Range(minimum=self.minimum, maximum=self.maximum)
+        return modeling.Range(*[self.minimum, self.maximum])
 
 
 class Value:

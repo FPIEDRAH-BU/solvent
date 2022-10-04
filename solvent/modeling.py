@@ -9,7 +9,6 @@ class Range:
         self.parameters = args
 
 
-
 class Integer:
     def __init__(self, *args: list[typing.Any]) -> None:
         self.parameters = args

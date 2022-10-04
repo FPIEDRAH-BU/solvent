@@ -3,11 +3,11 @@ Constraint: Logic | Relational | Arithmetic | Variable;
 
 
 // LOGIC CONSTRAINTS
-Logic: type=LogicType "(" parameters+=LogicParameter ")";
+Logic: type=LogicType "(" parameters+=LogicParameter[","] ")";
 
-LogicParameter: BOOL | Value | Logic;
+LogicParameter: BOOL | Value | Logic | Relational;
 
-LogicType: "Enquivalence"
+LogicType: "Equivalence"
            | "Implication"
            | "Negation"
            | "And"
@@ -18,7 +18,7 @@ LogicType: "Enquivalence"
 // RELATIONAL CONSTRAINTS
 Relational: type=RelationalType "(" parameters+=RelationalParameter[","] ")";
 
-RelationalParameter: INT | Value | RelationalInclusiveness| Arithmetic;
+RelationalParameter: INT | Value | RelationalInclusiveness | Arithmetic;
 
 RelationalInclusiveness: "Inclusive" | "Exclusive";
 
